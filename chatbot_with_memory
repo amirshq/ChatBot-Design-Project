@@ -13,3 +13,4 @@ with open("configs/app_config.yml") as cfg:
 gpt_model = app_config["gpt_model"]
 temperature = app_config["temperature"]
 llm_system_role = "You are a useful chatbot."
+
