@@ -58,7 +58,7 @@ container.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
-
+#Define Containers for the chatbot
 with container:
     with st.form(key='my_form', clear_on_submit=True):
         user_input = st.text_area("You:", key='input', height=25)
