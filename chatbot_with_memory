@@ -4,7 +4,7 @@ import openai
 import yaml
 from PIL import Image
 from utils.cfg import load_cfg
-
+# Load the Configuration in all code 
 load_cfg()
 
 
