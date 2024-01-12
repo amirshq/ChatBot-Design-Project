@@ -1,0 +1,51 @@
+# Simple Chatbot Project Using GPT-4
+
+## Overview
+This repository contains the Simple Chatbot Project, an advanced chatbot application powered by OpenAI's GPT-4. The project is split into two distinct versions:
+1. **Chatbot without Memory**: This version of the chatbot handles each query independently, without retaining information from previous interactions.
+2. **Chatbot with Memory**: This enhanced version maintains a contextual memory across interactions, allowing for more coherent and context-aware conversations.
+
+## Features
+- **GPT-4 Integration**: Leverages the powerful language understanding capabilities of OpenAI's GPT-4.
+- **Contextual Memory**: (In the memory-enabled version) Remembers the context of the conversation for more natural interactions.
+- **Easy-to-use Interface**: Designed to be straightforward and user-friendly.
+
+## Prerequisites
+- Python 3.6 or higher
+- Access to OpenAI's GPT-4 API
+
+## Installation
+You can clone this repository to your local machine using the following command:
+
+```bash
+git clone https://github.com/amirshq/ChatBot-Design-Project
+```
+
+Replace `your-username` with your actual GitHub username or organization name where the repository is hosted.
+
+## Setup
+1. **Install Dependencies**:
+   Navigate to the cloned repository's directory and install the required Python packages:
+   ```bash
+   cd simple-chatbot-gpt4
+   pip install -r requirements.txt
+   ```
+
+2. **API Key Configuration**:
+   Ensure you have an API key from OpenAI. Set this key in your environment variables or within the application configuration file as per the provided instructions in the config file.
+
+3. **Running the Chatbot**:
+   - To run the chatbot without memory, use:
+     ```bash
+     python simple_chatbot.py
+     ```
+   - To run the chatbot with memory, use:
+     ```bash
+     python chatbot_with_memory.py
+     ```
+
+## Usage
+After starting the chatbot, you can interact with it via the command line. Type your questions or statements, and the chatbot will respond accordingly.
+
+## Contributing
+Contributions to this project are welcome! Please read the `CONTRIBUTING.md` file for guidelines on how to make contributions.
