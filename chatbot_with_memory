@@ -14,3 +14,17 @@ gpt_model = app_config["gpt_model"]
 temperature = app_config["temperature"]
 llm_system_role = "You are a useful chatbot."
 
+
+# ===================================
+# Setting page title and header
+# ===================================
+im = Image.open("images/AI_RT.png")
+
+st.set_page_config(
+    page_title="Chatbot with memory",
+    page_icon=im,
+    layout="wide"
+)
+st.markdown("<h1 style='text-align: center;'>ChatGPT With Memory</h1>",
+            unsafe_allow_html=True)
+
