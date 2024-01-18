@@ -28,3 +28,30 @@ st.set_page_config(
 st.markdown("<h1 style='text-align: center;'>ChatGPT With Memory</h1>",
             unsafe_allow_html=True)
 
+# ===================================
+# Initialise session state variables
+# ===================================
+if 'generated' not in st.session_state:
+    st.session_state['generated'] = []
+if 'chat_history' not in st.session_state:
+    st.session_state['chat_history'] = []
+if 'past' not in st.session_state:
+    st.session_state['past'] = []
+if 'model_name' not in st.session_state:
+    st.session_state['model_name'] = []
+# ==================================
+# Sidebar:
+# ==================================
+st.sidebar.title("ChatBot with Function Calling")
+st.sidebar.image("images/AI_RT.png", use_column_width=True)
+model_name = st.sidebar.radio("Choose a model:", ("GPT-3.5", "GPT-4"))
+counter_placeholder = st.sidebar.empty()
+clear_button = st.sidebar.button("Clear Conversation", key="clear")
+# ==================================
+# Reset everything (Clear button)
+# ==================================
+if clear_button:
+    st.session_state['generated'] = []
+    st.session_state['past'] = []
+    st.session_state['model_name'] = []
+    st.session_state['chat_history'] = []
