@@ -74,3 +74,47 @@ container.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
+
+with container:
+    with st.form(key='my_form', clear_on_submit=True):
+        user_input = st.text_area("You:", key='input', height=25)
+        submit_button = st.form_submit_button(label='Send')
+
+    if submit_button and user_input:
+        st.session_state['chat_history'].append({
+            "role": "user",
+            "content": user_input
+        })
+        if len(st.session_state['chat_history']) > 5:
+            st.session_state['chat_history'] = st.session_state['chat_history'][-5:]
+        # Exclude the current user's question from the chat_history list
+        chat_history = "# User chat history: " + \
+            str([x for x in st.session_state['chat_history'][:-1]]) + "\n\n"
+
+        user_new_prompt = "# User new question: " + user_input
+
+        messages = [
+            {"role": "system", "content": str(
+                llm_system_role + chat_history)},
+            {"role": "user", "content": str(user_input)}
+        ]
+        # Generate response
+        response = openai.ChatCompletion.create(
+            engine=gpt_model,
+            messages=messages,
+            temperature=temperature,
+        )
+        st.session_state['past'].append(user_input)
+        if "content" in response.choices[0].message.keys():
+            st.session_state['generated'].append(
+                response["choices"][0]["message"]["content"])
+            st.session_state['chat_history'].append(
+                {"role": "system", "content":
+                    response["choices"][0]["message"]["content"]}
+            )
+        else:
+            st.session_state['generated'].append(
+                "Something happened, please try again later.")
+            st.session_state['chat_history'].append(
+                {"role": "system", "content": "Something happened, please try again later."}
+            )
